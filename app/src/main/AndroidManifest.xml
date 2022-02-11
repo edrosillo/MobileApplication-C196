@@ -13,14 +13,14 @@
             android:name=".UI.AssessmentDetail"
             android:exported="false" />
         <activity
-            android:name=".UI.TermDetails"
+            android:name=".UI.TermDetail"
             android:exported="false" />
         <activity
             android:name=".UI.AssessmentList"
             android:exported="false"
             android:label="Assessment List" />
         <activity
-            android:name=".UI.CourseDetails"
+            android:name=".UI.CourseDetail"
             android:exported="false"
             android:label="Course Details"
             android:parentActivityName=".UI.CourseList" />

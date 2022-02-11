@@ -4,6 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.TermDetails">
+    tools:context=".UI.TermDetail">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_term_editor"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/termTitleField"
+        android:layout_width="380dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="2dp"
+        android:ems="10"
+        android:hint="Term Title"
+        android:inputType="textPersonName"
+        android:maxLength="24"
+        android:maxLines="1"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_term_editor" />
+
+    <Button
+        android:id="@+id/saveTermButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="onClickSaveTerm"
+        android:text="SAVE"
+        app:layout_constraintStart_toStartOf="@+id/startDateField"
+        app:layout_constraintTop_toBottomOf="@+id/startDateField" />
+
+    <Button
+        android:id="@+id/startDateField"
+        android:layout_width="180dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="68dp"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="sans-serif"
+        android:text="Start Date"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#8A8A8A"
+        app:cornerRadius="0dp"
+        app:layout_constraintStart_toStartOf="@+id/termTitleField"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_term_editor" />
+
+    <Button
+        android:id="@+id/endDateField"
+        android:layout_width="180dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="68dp"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="sans-serif"
+        android:text="End Date"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#8A8A8A"
+        app:cornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/termTitleField"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toEndOf="@+id/startDateField"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_term_editor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
