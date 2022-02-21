@@ -19,10 +19,37 @@
         app:srcCompat="@drawable/ic_baseline_add_24" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
-        android:layout_width="413dp"
-        android:layout_height="match_parent"
-        android:background="#0048BD"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/termsRecyclerView"
+        android:layout_width="382dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="68dp"
+        android:background="#F2F3F4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appInstructions" />
+
+    <TextView
+        android:id="@+id/termTableLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
+        android:text="Terms:"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/termsRecyclerView"
+        app:layout_constraintTop_toBottomOf="@+id/appInstructions" />
+
+    <TextView
+        android:id="@+id/appInstructions"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:text="Select a term from the table to edit a term or use the Add button to create a term."
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

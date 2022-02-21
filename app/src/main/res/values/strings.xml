@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Mobile Application - C196</string>
+    <string name="channel_name">channelName</string>
+    <string name="channel_description">channelDescription</string>
 </resources>

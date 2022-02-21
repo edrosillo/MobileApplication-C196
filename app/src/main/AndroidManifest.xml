@@ -9,12 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileApplicationC196">
+        <receiver
+            android:name=".UI.MyReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+
         <activity
             android:name=".UI.AssessmentDetail"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Assessment Details" />
         <activity
             android:name=".UI.TermDetail"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Term Details" />
         <activity
             android:name=".UI.AssessmentList"
             android:exported="false"

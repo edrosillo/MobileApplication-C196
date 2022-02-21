@@ -12,6 +12,7 @@ import com.eduardorosillo.mobileapplication_c196.Entity.Term;
 import com.eduardorosillo.mobileapplication_c196.R;
 
 public class MainActivity extends AppCompatActivity {
+    public static int numAlert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

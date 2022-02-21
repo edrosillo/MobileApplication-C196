@@ -21,7 +21,7 @@ public class Repository {
     List<Course> mAllCourses;
     List<Assessment> mAllAssessments;
 
-    private static int NUMBER_OF_THREADS = 6;
+    private static int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     public Repository(Application application) {
@@ -46,7 +46,7 @@ public class Repository {
     }
 
     //Inserts Terms into Database
-    public void insert(Term term) {
+    public void insertTerm(Term term) {
         databaseExecutor.execute(() -> {
             mTermDAO.insertTerm(term);
         });
@@ -58,7 +58,7 @@ public class Repository {
     }
 
     //Updates Term in Database
-    public void update(Term term) {
+    public void updateTerm(Term term) {
         databaseExecutor.execute(() -> {
             mTermDAO.updateTerm(term);
         });
@@ -70,9 +70,107 @@ public class Repository {
     }
 
     //Deletes Term in Database
-    public void delete(Term term) {
+    public void deleteTerm(Term term) {
         databaseExecutor.execute(() -> {
             mTermDAO.deleteTerm(term);
+        });
+        try{
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<Course>getAllCourses(){
+        databaseExecutor.execute(()->{
+            mAllCourses=mCourseDAO.getAllCourses();
+        });
+        //Add delay to allow for processing time, or it will return null
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return mAllCourses;
+    }
+
+    //Inserts Courses into Database
+    public void insertCourse(Course course) {
+        databaseExecutor.execute(() -> {
+            mCourseDAO.insertCourse(course);
+        });
+        try{
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //Updates Course in Database
+    public void updateCourse(Course course) {
+        databaseExecutor.execute(() -> {
+            mCourseDAO.updateCourse(course);
+        });
+        try{
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //Deletes Course in Database
+    public void deleteCourse(Course course) {
+        databaseExecutor.execute(() -> {
+            mCourseDAO.deleteCourse(course);
+        });
+        try{
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<Assessment>getAllAssessments(){
+        databaseExecutor.execute(()->{
+            mAllAssessments=mAssessmentDAO.getAllAssessments();
+        });
+        //Add delay to allow for processing time, or it will return null
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return mAllAssessments;
+    }
+
+    //Inserts Courses into Database
+    public void insertAssessment(Assessment assessment) {
+        databaseExecutor.execute(() -> {
+            mAssessmentDAO.insertAssessment(assessment);
+        });
+        try{
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //Updates Course in Database
+    public void updateAssessment(Assessment assessment) {
+        databaseExecutor.execute(() -> {
+            mAssessmentDAO.updateAssessment(assessment);
+        });
+        try{
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //Deletes Course in Database
+    public void deleteAssessment(Assessment assessment) {
+        databaseExecutor.execute(() -> {
+            mAssessmentDAO.deleteAssessment(assessment);
         });
         try{
             Thread.sleep(1000);

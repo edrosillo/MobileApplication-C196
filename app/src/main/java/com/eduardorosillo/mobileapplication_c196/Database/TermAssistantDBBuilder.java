@@ -23,7 +23,7 @@ public abstract class TermAssistantDBBuilder extends RoomDatabase {
 
     private static volatile TermAssistantDBBuilder INSTANCE;
 
-    static TermAssistantDBBuilder getDatabase(final Context context){
+    public static TermAssistantDBBuilder getDatabase(final Context context){
         if(INSTANCE==null) {
             synchronized (TermAssistantDBBuilder.class) {
                 if (INSTANCE == null) {

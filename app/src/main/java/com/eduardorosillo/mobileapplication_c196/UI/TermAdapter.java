@@ -16,17 +16,24 @@ import com.eduardorosillo.mobileapplication_c196.R;
 import java.util.List;
 
 public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder> {
+
     class TermViewHolder extends RecyclerView.ViewHolder {
-        private final TextView termItemView;
+
+        private final TextView termItemView1;
+        private final TextView termItemView2;
+        private final TextView termItemView3;
+
         private TermViewHolder(View itemView) {
             super(itemView);
-            termItemView=itemView.findViewById(R.id.textView3);
+            termItemView1=itemView.findViewById(R.id.termTextView1);
+            termItemView2=itemView.findViewById(R.id.termTextView2);
+            termItemView3=itemView.findViewById(R.id.termTextView3);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int position=getAdapterPosition();
                     final Term current=mTerms.get(position);
-                    Intent intent=new Intent(context, CourseList.class);
+                    Intent intent=new Intent(context, TermDetail.class);
                     intent.putExtra("id", current.getTermID());
                     intent.putExtra("title", current.getTermTitle());
                     intent.putExtra("start", current.getStartDate());
@@ -40,6 +47,7 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
     private List<Term> mTerms;
     private final Context context;
     private final LayoutInflater mInflater;
+
     public TermAdapter(Context context) {
         mInflater=LayoutInflater.from(context);
         this.context= context;
@@ -57,10 +65,16 @@ public class TermAdapter extends RecyclerView.Adapter<TermAdapter.TermViewHolder
         if(mTerms!=null) {
             Term current=mTerms.get(position);
             String title=current.getTermTitle();
-            holder.termItemView.setText(title);
+            String start=current.getStartDate();
+            String end=current.getEndDate();
+            holder.termItemView1.setText(title);
+            holder.termItemView2.setText(start);
+            holder.termItemView3.setText(end);
         }
         else {
-            holder.termItemView.setText("No term title");
+            holder.termItemView1.setText("No term title");
+            holder.termItemView2.setText("No Start Date");
+            holder.termItemView3.setText("No End Date");
         }
     }
 

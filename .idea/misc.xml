@@ -7,14 +7,19 @@
         <entry key="app/src/main/res/drawable/ic_forward.xml" value="0.3463541666666667" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/activity_assessment_detail.xml" value="0.2921195652173913" />
-        <entry key="app/src/main/res/layout/activity_course_details.xml" value="0.2921195652173913" />
+        <entry key="app/src/main/res/layout/activity_course_details.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_course_list.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2536231884057971" />
         <entry key="app/src/main/res/layout/activity_term_details.xml" value="0.2921195652173913" />
         <entry key="app/src/main/res/layout/activity_term_list.xml" value="0.3138586956521739" />
         <entry key="app/src/main/res/layout/list_item_assessment.xml" value="0.2921195652173913" />
         <entry key="app/src/main/res/layout/list_item_course.xml" value="0.2921195652173913" />
+        <entry key="app/src/main/res/layout/list_item_term.xml" value="0.25" />
         <entry key="app/src/main/res/layout/term_list_item.xml" value="0.2921195652173913" />
+        <entry key="app/src/main/res/menu/menu_assessment_details.xml" value="0.3411458333333333" />
+        <entry key="app/src/main/res/menu/menu_course_details.xml" value="0.3411458333333333" />
+        <entry key="app/src/main/res/menu/menu_term_details.xml" value="0.3302083333333333" />
+        <entry key="app/src/main/res/menu/menu_term_list.xml" value="0.3411458333333333" />
         <entry key="app/src/main/res/menu/menu_termlist.xml" value="0.3484375" />
       </map>
     </option>

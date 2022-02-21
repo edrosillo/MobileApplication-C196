@@ -7,59 +7,45 @@ import java.util.Date;
 
 @Entity(tableName = "assessments")
 public class Assessment {
+
     @PrimaryKey(autoGenerate = true)
-    private int id;
-    private String title;
-    private Date date;
-    private AssessmentType assessmentType;
-    private int courseId;
+    private int assessmentID;
+    private String assessmentTitle;
+    private String assessmentStartDate;
+    private String assessmentEndDate;
+    private String assessmentType;
+    private int courseID;
 
-    public Assessment(String title, Date date, AssessmentType assessmentType, int courseId) {
-        this.title = title;
-        this.date = date;
+    public Assessment(int assessmentID, String assessmentTitle, String assessmentStartDate, String assessmentEndDate, String assessmentType, int courseID) {
+        this.assessmentID = assessmentID;
+        this.assessmentTitle = assessmentTitle;
+        this.assessmentStartDate = assessmentStartDate;
+        this.assessmentEndDate = assessmentEndDate;
         this.assessmentType = assessmentType;
-        this.courseId = courseId;
+        this.courseID = courseID;
     }
 
+    public int getAssessmentID() { return assessmentID; }
 
-    public int getId() {
-        return id;
-    }
+    public void setAssessmentID(int assessmentID) { this.assessmentID = assessmentID; }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public String getAssessmentTitle() { return assessmentTitle; }
 
-    public String getTitle() {
-        return title;
-    }
+    public void setAssessmentTitle(String assessmentTitle) { this.assessmentTitle = assessmentTitle; }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public String getAssessmentStartDate() { return assessmentStartDate; }
 
-    public Date getDate() {
-        return date;
-    }
+    public void setAssessmentStartDate(String assessmentStartDate) { this.assessmentStartDate = assessmentStartDate; }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
+    public String getAssessmentEndDate() { return assessmentEndDate; }
 
-    public AssessmentType getAssessmentType() {
-        return assessmentType;
-    }
+    public void setAssessmentEndDate(String assessmentEndtDate) { this.assessmentEndDate = assessmentEndtDate; }
 
-    public void setAssessmentType(AssessmentType assessmentType) {
-        this.assessmentType = assessmentType;
-    }
+    public String getAssessmentType() { return assessmentType; }
 
-    public int getCourseId() {
-        return courseId;
-    }
+    public void setAssessmentType(String assessmentType) { this.assessmentType = assessmentType; }
 
-    public void setCourseId(int courseId) {
-        this.courseId = courseId;
-    }
+    public int getCourseID() { return courseID; }
 
+    public void setCourseId(int courseId) { this.courseID = courseId; }
 }
