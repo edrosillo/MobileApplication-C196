@@ -96,9 +96,19 @@ public class CourseDetail extends AppCompatActivity {
         courseTitleField= findViewById(R.id.courseTitleField);
         courseTitleField.setText(title);
         startDateField = findViewById(R.id.startDateField);
-        startDateField.setText(start);
+        //startDateField.setText(start);
+        if (start == null){
+            startDateField.setText("Start Date");
+        } else {
+            startDateField.setText(start);
+        }
         endDateField = findViewById(R.id.endDateField);
-        endDateField.setText(end);
+        //endDateField.setText(end);
+        if (end == null){
+            endDateField.setText("End Date");
+        } else {
+            endDateField.setText(end);
+        }
         courseStatusField = findViewById(R.id.courseStatusField);
         courseStatusField.setText(status);
         courseInstructorNameField = findViewById(R.id.courseInstructorNameField);
@@ -249,8 +259,8 @@ public class CourseDetail extends AppCompatActivity {
                     Intent intent = new Intent(CourseDetail.this, TermDetail.class);
                     intent.putExtra("id", termForCourse.getTermID());
                     intent.putExtra("title", termForCourse.getTermTitle());
-                    intent.putExtra("start_date", termForCourse.getStartDate());
-                    intent.putExtra("end_date", termForCourse.getEndDate());
+                    intent.putExtra("start", termForCourse.getStartDate());
+                    intent.putExtra("end", termForCourse.getEndDate());
                     startActivity(intent);
                 } else {
                     Toast.makeText(CourseDetail.this, "A Course with Assessments can not be deleted.", Toast.LENGTH_LONG).show();
@@ -262,14 +272,14 @@ public class CourseDetail extends AppCompatActivity {
                 sendIntent.putExtra(Intent.EXTRA_TEXT, courseNoteField.getText().toString());
                 sendIntent.putExtra(Intent.EXTRA_TITLE, courseTitleField.getText().toString() + " Notes" );
                 sendIntent.setType("text/plain");
-
                 Intent shareIntent = Intent.createChooser(sendIntent, null);
                 startActivity(shareIntent);
                 return true;
             case R.id.notifyCourseStart:
+                String screenCourseTitle = courseTitleField.getText().toString();
                 String screenStartDate = startDateField.getText().toString();
-                String dateFormat = "MM/dd/yy";
-                SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
+                myFormat = "MM/dd/yy"; //In which you need put here
+                sdf = new SimpleDateFormat(myFormat, Locale.US);
                 Date date = null;
                 try {
                     date = sdf.parse(screenStartDate);
@@ -278,15 +288,16 @@ public class CourseDetail extends AppCompatActivity {
                 }
                 Long trigger = date.getTime();
                 Intent notifyStart = new Intent(CourseDetail.this, MyReceiver.class);
-                notifyStart.putExtra("key", "Your " + title + " course STARTS " + startDate + "!");
+                notifyStart.putExtra("key", "Your " + screenCourseTitle + " course STARTS TODAY! " + screenStartDate);
                 PendingIntent pendingStart = PendingIntent.getBroadcast(CourseDetail.this, ++MainActivity.numAlert, notifyStart, 0);
                 AlarmManager startAlarm = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
                 startAlarm.set(AlarmManager.RTC_WAKEUP, trigger, pendingStart);
                 return true;
             case R.id.notifyCourseEnd:
+                String screenCourseTitle2 = courseTitleField.getText().toString();
                 String screenEndDate = endDateField.getText().toString();
-                dateFormat = "MM/dd/yy";
-                sdf = new SimpleDateFormat(dateFormat, Locale.US);
+                myFormat = "MM/dd/yy";
+                sdf = new SimpleDateFormat(myFormat, Locale.US);
                 date = null;
                 try {
                     date = sdf.parse(screenEndDate);
@@ -295,7 +306,7 @@ public class CourseDetail extends AppCompatActivity {
                 }
                 trigger = date.getTime();
                 Intent notifyEnd = new Intent(CourseDetail.this, MyReceiver.class);
-                notifyEnd.putExtra("key", "Your " + title + " course ENDS " + endDate + "!");
+                notifyEnd.putExtra("key", "Your " + screenCourseTitle2 + " course ENDS TODAY! " + screenEndDate);
                 PendingIntent pendingEnd = PendingIntent.getBroadcast(CourseDetail.this, ++MainActivity.numAlert, notifyEnd, 0);
                 AlarmManager endAlarm = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
                 endAlarm.set(AlarmManager.RTC_WAKEUP, trigger, pendingEnd);
@@ -350,8 +361,8 @@ public class CourseDetail extends AppCompatActivity {
         Intent intent = new Intent(CourseDetail.this, TermDetail.class);
         intent.putExtra("id", termForCourse.getTermID());
         intent.putExtra("title", termForCourse.getTermTitle());
-        intent.putExtra("start_date", termForCourse.getStartDate());
-        intent.putExtra("end_date", termForCourse.getEndDate());
+        intent.putExtra("start", termForCourse.getStartDate());
+        intent.putExtra("end", termForCourse.getEndDate());
         startActivity(intent);
     }
 }

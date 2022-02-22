@@ -76,9 +76,19 @@ public class AssessmentDetail extends AppCompatActivity {
         assessmentTitleField = findViewById(R.id.assessmentTitleField);
         assessmentTitleField.setText(title);
         assessmentStartField = findViewById(R.id.assessmentStartField);
-        assessmentStartField.setText(start);
+        //assessmentStartField.setText(start);
+        if (start == null){
+            assessmentStartField.setText("Start Date");
+        } else {
+            assessmentStartField.setText(start);
+        }
         assessmentEndField = findViewById(R.id.assessmentEndField);
-        assessmentEndField.setText(end);
+        //assessmentEndField.setText(end);
+        if (end == null){
+            assessmentEndField.setText("End Date");
+        } else {
+            assessmentEndField.setText(end);
+        }
         assessmentTypeField = findViewById(R.id.assessmentTypeField);
         assessmentTypeField.setText(type);
 
@@ -187,9 +197,10 @@ public class AssessmentDetail extends AppCompatActivity {
                 intent.putExtra("term_ID", courseForAssessment.getTermID());
                 startActivity(intent);
             case R.id.notifyAssessmentStart:
+                String screenAssessmentTitle = assessmentTitleField.getText().toString();
                 String screenAssessmentStart = assessmentStartField.getText().toString();
-                String dateFormat = "MM/dd/yy";
-                SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
+                myFormat = "MM/dd/yy"; //In which you need put here
+                sdf = new SimpleDateFormat(myFormat, Locale.US);
                 Date date = null;
                 try {
                     date = sdf.parse(screenAssessmentStart);
@@ -198,15 +209,16 @@ public class AssessmentDetail extends AppCompatActivity {
                 }
                 Long trigger = date.getTime();
                 Intent notifyAssessmentStart = new Intent(AssessmentDetail.this, MyReceiver.class);
-                notifyAssessmentStart.putExtra("key", "Your " + title + " assessment STARTS " + startDate + "!");
+                notifyAssessmentStart.putExtra("key", "Your " + screenAssessmentTitle + " assessment STARTS TODAY! " + screenAssessmentStart);
                 PendingIntent pendingAssessmentStart = PendingIntent.getBroadcast(AssessmentDetail.this, ++MainActivity.numAlert, notifyAssessmentStart, 0);
                 AlarmManager startAlarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 startAlarm.set(AlarmManager.RTC_WAKEUP, trigger, pendingAssessmentStart);
                 return true;
             case R.id.notifyAssessmentEnd:
+                String screenAssessmentTitle2 = assessmentTitleField.getText().toString();
                 String screenAssessmentEnd = assessmentEndField.getText().toString();
-                dateFormat = "MM/dd/yy";
-                sdf = new SimpleDateFormat(dateFormat, Locale.US);
+                myFormat = "MM/dd/yy"; //In which you need put here
+                sdf = new SimpleDateFormat(myFormat, Locale.US);
                 date = null;
                 try {
                     date = sdf.parse(screenAssessmentEnd);
@@ -215,7 +227,7 @@ public class AssessmentDetail extends AppCompatActivity {
                 }
                 trigger = date.getTime();
                 Intent notifyAssessmentEnd = new Intent(AssessmentDetail.this, MyReceiver.class);
-                notifyAssessmentEnd.putExtra("key", "Your " + title + " assessment ENDS " + endDate + "!");
+                notifyAssessmentEnd.putExtra("key", "Your " + screenAssessmentTitle2 + " assessment end TODAY! " + screenAssessmentEnd);
                 PendingIntent pendingAssessmentEnd = PendingIntent.getBroadcast(AssessmentDetail.this, ++MainActivity.numAlert, notifyAssessmentEnd, 0);
                 AlarmManager endAlarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 endAlarm.set(AlarmManager.RTC_WAKEUP, trigger, pendingAssessmentEnd);

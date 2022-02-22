@@ -73,11 +73,23 @@ public class TermDetail extends AppCompatActivity {
         termTitleField=findViewById(R.id.termTitleField);
         termTitleField.setText(title);
         startDateField =findViewById(R.id.startDateField);
-        startDateField.setText(start);
+        //startDateField.setText(start);
+        if (start == null){
+            startDateField.setText("Start Date");
+        } else {
+            startDateField.setText(start);
+        }
         endDateField =findViewById(R.id.endDateField);
-        endDateField.setText(end);
+        //endDateField.setText(end);
+        if (end == null){
+            endDateField.setText("End Date");
+        } else {
+            endDateField.setText(end);
+        }
 
-        saveTermButton =findViewById(R.id.saveTermButton);
+
+
+        saveTermButton = findViewById(R.id.saveTermButton);
 
         myFormat = "MM/dd/yy"; //In which you need put here
         sdf = new SimpleDateFormat(myFormat, Locale.US);
